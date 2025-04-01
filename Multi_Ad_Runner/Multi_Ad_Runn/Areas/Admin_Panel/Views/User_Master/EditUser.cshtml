@@ -1,0 +1,70 @@
+﻿@model Multi_Ad_Runn.Areas.Admin_Panel.Data.User_Master
+@{
+    ViewBag.Title = "EditUser";
+    Layout = "~/Areas/Admin_Panel/Views/Admin_MasterPage.cshtml";
+}
+
+
+
+@using (Html.BeginForm())
+{
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Edit User</h4>
+                        <div class="basic-form">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.ValidationSummary(true, "", new { @class = "text-success" })
+                            <form>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label> User Id</label>
+                                        @*<input type="email" class="form-control" placeholder="Email">*@
+                                        @Html.TextBoxFor(model => model.U_Id, htmlAttributes: new { @class = "form-control", @placeholder = "Enter User ID" })
+
+                                    </div>
+
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label> User Name</label>
+                                        @*<input type="email" class="form-control" placeholder="Email">*@
+                                        @Html.TextBoxFor(model => model.U_Name, htmlAttributes: new { @class = "form-control", @placeholder = "Enter User Name" })
+                                        @Html.ValidationMessageFor(model => model.U_Name, "", new { @class = "alert alert-danger" })
+                                    </div>
+
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Contact No. </label>
+                                        @*<input type="email" class="form-control" placeholder="Email">*@
+                                        @Html.TextBoxFor(model => model.U_Contact, htmlAttributes: new { @class = "form-control", @placeholder = "Enter Contact No " })
+                                        @Html.ValidationMessageFor(model => model.U_Contact, "", new { @class = "alert alert-danger" })
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Status</label>
+                                        @*<input type="email" class="form-control" placeholder="Email">*@
+                                        @*@Html.TextBoxFor(model => model.U_Status, htmlAttributes: new { @class = "form-control", @placeholder = "Enter Status " })*@
+                                        @Html.DropDownList("U_Status", new List<SelectListItem>
+                                       {
+
+                                           new SelectListItem{Text="Active",Value="Active",Selected=true},
+                                           new SelectListItem{Text="DeActive",Value="DeActive"},
+                                       }, "", new { @class = "form-control" })
+                                    </div>
+
+                                </div>
+
+                                <button type="submit" class="btn btn-dark">Save Data</button>
+                            </form>
+                            <div class="alert alert-success">@Html.ViewData["Message"]</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

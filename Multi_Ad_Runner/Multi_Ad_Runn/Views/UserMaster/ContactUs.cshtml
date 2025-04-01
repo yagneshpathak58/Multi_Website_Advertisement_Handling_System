@@ -1,0 +1,84 @@
+﻿@model Multi_Ad_Runn.Models.Feedback_Master
+@{
+    ViewBag.Title = "ContactUs";
+    Layout = "~/Views/User_MasterPage.cshtml";
+}
+
+@using (Html.BeginForm("ContactUs", "UserMaster", FormMethod.Post))
+{
+    <section id="main" class="clearfix contact-us">
+        <div class="container">
+
+            <ol class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li>Contact</li>
+            </ol>
+            <h2 class="title">Contact Us</h2>
+
+          
+            <div class="corporate-info">
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="contact-info">
+                            <h2>Corporate Info</h2>
+                            <address>
+                                <p><strong>adress: </strong>1234 Street Name, City Name, Country</p>
+                                <p><strong>Phone:</strong> <a href="#">(123) 456-7890</a></p>
+                                <p><strong>Email: </strong><a href="#"><span class="__cf_email__" data-cfemail="5b32353d341b3834362b3a352275383436">[email&#160;protected]</span></a></p>
+                            </address>
+                            <ul class="social">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="feedback">
+                            <h2>Send Us Your Feedback</h2>
+                            <form id="contact-form" class="contact-form" name="contact-form" method="post" action="#">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                        @Html.ValidationSummary(true, "", new { @class = "text-success" })
+                                        <div class="form-group">
+                                            @*<input type="text" class="form-control" required="required" placeholder="Name">*@
+                                            @Html.TextBoxFor(model => model.F_Name, htmlAttributes: new { @class = "form-control", @placeholder = "Enter  Name" })
+                                            @Html.ValidationMessageFor(model => model.F_Name, "", new { @class = "alert alert-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @*<input type="email" class="form-control" required="required" placeholder="Email Id">*@
+                                            @Html.TextBoxFor(model => model.F_Email, htmlAttributes: new { @class = "form-control", @placeholder = "Enter  Email" })
+                                            @Html.ValidationMessageFor(model => model.F_Email, "", new { @class = "alert alert-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            @*<input type="text" class="form-control" required="required" placeholder="Subject">*@
+                                            @Html.TextBoxFor(model => model.F_Title, htmlAttributes: new { @class = "form-control", @placeholder = "Enter  Subject" })
+                                            @Html.ValidationMessageFor(model => model.F_Title, "", new { @class = "alert alert-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            @*<textarea name="message" id="message" required="required" class="form-control" rows="7" placeholder="Message"></textarea>*@
+                                            @Html.TextAreaFor(model => model.F_Message, htmlAttributes: new { @class = "form-control", @placeholder = "Enter  Message" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-success">@Html.ViewData["MessageS"]</div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn">Submit Your Message</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

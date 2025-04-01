@@ -1,0 +1,192 @@
+﻿@model IEnumerable<Multi_Ad_Runn.Models.PaymentDetails>
+@{
+    ViewBag.Title = "ViewOrderHistory";
+    Layout = "~/Views/User_MasterPage.cshtml";
+}
+
+
+<section id="main" class="clearfix  ad-profile-page">
+    <div class="container">
+        <div class="breadcrumb-section">
+
+            <ol class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li>Ad Post</li>
+            </ol>
+            <h2 class="title">My Profile</h2>
+        </div>
+        <div class="ad-profile section">
+            <div class="user-profile">
+                <div class="user-images">
+                    <img src="~/images/user.jpg" alt="User Images" class="img-fluid">
+                </div>
+                <div class="user">
+                    <h2>Hello, <a href="#"></a></h2>
+                    @*<h5></h5>*@
+                </div>
+                <div class="favorites-user">
+                    <div class="my-ads">
+                        <a href="my-ads.html">23<small>My ADS</small></a>
+                    </div>
+                    <div class="favorites">
+                        <a href="#">18<small>Favorites</small></a>
+                    </div>
+                </div>
+            </div>
+            <ul class="user-menu">
+                <li class="active"><a href="~/Profile/UserProfile">Profile</a></li>
+                <li><a href="~/Profile/ChangePassword">Change Password</a></li>
+                <li><a href="~/Profile/ViewOrderHistory">Ads History</a></li>
+                <li><a href="~/AdRequestMaster/AdRequest">Ads Request</a></li>
+            </ul>
+        </div>
+        <div class="profile">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="user-pro-section">
+                      
+                        <div class="profile-details section">
+
+                            <!--**********************************
+        Content body start
+    ***********************************-->
+
+
+
+                            <div class="row page-titles mx-0">
+                                <div class="col p-md-0">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                                        <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <!-- row -->
+
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h4 class="card-title">Order History</h4>
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped table-bordered zero-configuration">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>ID</th>
+                                                                <th>Bill Number</th>
+                                                                <th>Title</th>
+                                                                <th>Page Detail</th>
+                                                                <th>Duration</th>
+                                                                <th>Status</th>
+                                                                <th>DATE</th>
+                                                                <th>ACTION</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var item in Model)
+                                                            {
+                                                            <tr>
+                                                                <td>
+                                                                    @Html.HiddenFor(modelItem => item.C_Id)
+                                                                    @Html.HiddenFor(modelItem => item.U_Id)
+                                                                    @Html.DisplayFor(modelItem => item.Or_Id)
+                                                                </td>
+                                                                <td>@Html.DisplayFor(modelItem => item.B_Num)</td>
+                                                                <td>@Html.DisplayFor(modelItem => item.A_R_Title)</td>
+                                                                <td>
+
+                                                                    Page :@Html.DisplayFor(modelItem => item.A_R_Page)<br />
+                                                                    Position : @Html.DisplayFor(modelItem => item.A_R_Position)
+                                                                </td>
+                                                                <td>
+                                                                    @Html.HiddenFor(modelItem => item.A_R_ImageName)
+                                                                    @Html.HiddenFor(modelItem => item.A_R_ImagePath)
+                                                                    Months :@Html.DisplayFor(modelItem => item.A_R_Duration)<br />
+                                                                    Expiry Date : @Html.DisplayFor(modelItem => item.A_R_Expire_Date)
+                                                                </td>
+                                                                <td>@Html.DisplayFor(modelItem => item.Or_Status)</td>
+                                                                <td>@Html.DisplayFor(modelItem => item.Or_Date)</td>
+                                                                <td>
+                                                                    @Html.ActionLink("Detail", "OrderDetail", new { Bnum = item.B_Num ,cid = item.C_Id}) |
+                                                                    
+                                                                </td>
+                                                            </tr>
+                                                            }
+
+                                                        </tbody>
+                                                        <tfoot>
+                                                            <tr>
+                                                                <th>ID</th>
+                                                                <th>Bill Number</th>
+                                                                <th>Title</th>
+                                                                <th>Page Detail</th>
+                                                                <th>Duration</th>
+                                                                <th>Status</th>
+                                                                <th>DATE</th>
+                                                                <th>ACTION</th>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- #/ container -->
+                            <!--**********************************
+        Content body end
+    ***********************************-->
+
+                        </div>
+
+                        @*<button type="submit" class="btn">Update Profile</button>
+
+                        <a href="#" class="btn cancle">Cancle</a>*@
+                    </div>
+                </div>
+                @*<div class="col-md-4 text-center">
+                    <div class="recommended-cta">
+                        <div class="cta">
+
+                            <div class="single-cta">
+
+                                <div class="cta-icon icon-secure">
+                                    <img src="~/images/icon/13.png" alt="Icon" class="img-fluid">
+                                </div>
+                                <h4>Secure Trading</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                            </div>
+
+                            <div class="single-cta">
+
+                                <div class="cta-icon icon-support">
+                                    <img src="~/images/icon/14.png" alt="Icon" class="img-fluid">
+                                </div>
+                                <h4>24/7 Support</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                            </div>
+
+                            <div class="single-cta">
+
+                                <div class="cta-icon icon-trading">
+                                    <img src="~/images/icon/15.png" alt="Icon" class="img-fluid">
+                                </div>
+                                <h4>Easy Trading</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                            </div>
+
+                            <div class="single-cta">
+                                <h5>Need Help?</h5>
+                                <p><span>Give a call on</span><a href="tellto:08048100000"> 08048100000</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+            </div>
+        </div>
+    </div>
+</section>
+
+

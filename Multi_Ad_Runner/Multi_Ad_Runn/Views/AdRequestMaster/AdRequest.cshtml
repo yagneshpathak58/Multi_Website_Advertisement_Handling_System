@@ -1,0 +1,131 @@
+﻿@model Multi_Ad_Runn.Models.Ad_Request_Master
+@{
+    ViewBag.Title = "AdRequest";
+    Layout = "~/Views/User_MasterPage.cshtml";
+}
+
+
+@using (Html.BeginForm("AdRequest", "AdRequestMaster", FormMethod.Post, new { enctype = "multipart/form-data"  }))
+{
+<section id="main" class="clearfix ad-details-page">
+    <div class="container">
+        <div class="breadcrumb-section">
+
+            <ol class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li>Ad Request </li>
+            </ol>
+            <h2 class="title">Mobile Phones</h2>
+        </div>
+        <div class="adpost-details">
+            <div class="row">
+                <div class="col-lg-8">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <form action="#">
+                        <fieldset>
+                            <div class="section postdetails">
+                                <h4>Sell an item or service <span class="pull-right">* Mandatory Fields</span></h4>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label>Title</label>
+                                        @*<input type="password" class="form-control" placeholder="Password">*@
+                                        @Html.TextBoxFor(model => model.A_R_Title, htmlAttributes: new { @class = "form-control", @placeholder = "Title" })
+                                        @Html.ValidationMessageFor(model => model.A_R_Title, "", new { @class = "alert alert-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label>Ad Position</label>
+                                        @*<input type="email" class="form-control" placeholder="Email">*@
+                                        @Html.DropDownList("A_R_Position", new List<SelectListItem>
+                                        {
+
+                                            new SelectListItem{Text="Center",Value="Center",Selected=true},
+                                            new SelectListItem{Text="Up",Value="Up"},
+                                            new SelectListItem{Text="Down",Value="Down"},
+                                            new SelectListItem{Text="RightSide",Value="RightSide"},
+                                            new SelectListItem{Text="LeftSide",Value="LeftSide"},
+                                        }, "", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.A_R_Position, "", new { @class = "alert alert-danger" })
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Ad Page</label>
+                                        @*<input type="email" class="form-control" placeholder="Email">*@
+                                        @*@Html.PasswordFor(model => model.U_Password, htmlAttributes: new { @class = "form-control", @placeholder = "Enter Password " })*@
+                                        @Html.DropDownList("A_R_Page", new List<SelectListItem>
+                                       {
+
+                                           new SelectListItem{Text="Main",Value="Main",Selected=true},
+                                           new SelectListItem{Text="Inner",Value="Inner"},
+
+                                       }, "", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.A_R_Page, "", new { @class = "alert alert-danger" })
+                                    </div>
+
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label>Category</label>
+                                        @*<input type="email" class="form-control" placeholder="Email">*@
+                                        @Html.DropDownListFor(model => model.C_Id, Model.Category_Master, "Please Select Category", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.C_Id, "", new { @class = "alert alert-danger" })
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <label>Duration</label>
+                                        @*<input type="email" class="form-control" placeholder="Email">*@
+                                        @*@Html.PasswordFor(model => model.U_Password, htmlAttributes: new { @class = "form-control", @placeholder = "Enter Password " })*@
+                                        @Html.DropDownList("A_R_Duration", new List<SelectListItem>
+                                       {
+
+                                           new SelectListItem{Text="1 Month",Value="1",Selected=true},
+                                           new SelectListItem{Text="3 Months",Value="3"},
+                                           new SelectListItem{Text="6 Months",Value="6"},
+                                           new SelectListItem{Text="12 Months",Value="12"},
+
+                                       }, "", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.A_R_Duration, "", new { @class = "alert alert-danger" })
+                                    </div>
+
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label>Ad Image</label>
+                                        @*<input type="password" class="form-control" placeholder="Password">*@
+                                        @Html.TextBoxFor(model => model.A_R_ImageName, htmlAttributes: new { @class = "form-control", @placeholder = "", type = "File" })
+                                        @Html.ValidationMessageFor(model => model.A_R_ImageName, "", new { @class = "alert alert-danger" })
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Post Your Ad</button>
+                                <div class="alert alert-danger">@Html.ViewData["Message"]</div>
+                            </div>
+
+                        </fieldset>
+                    </form>
+                    
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="section quick-rules">
+                        <h4>Quick rules</h4>
+                        <p class="lead">Posting an ad on <a href="#">Trade.com</a> is free! However, all ads must follow our rules:</p>
+                        <ul>
+                            <li>Make sure you post in the correct category.</li>
+                            <li>Do not post the same ad more than once or repost an ad within 48 hours.</li>
+                            <li>Do not upload pictures with watermarks.</li>
+                            <li>Do not post ads containing multiple items unless it's a package deal.</li>
+                            <li>Do not put your email or phone numbers in the title or description.</li>
+                            <li>Make sure you post in the correct category.</li>
+                            <li>Do not post the same ad more than once or repost an ad within 48 hours.</li>
+                            <li>Do not upload pictures with watermarks.</li>
+                            <li>Do not post ads containing multiple items unless it's a package deal.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+}
+

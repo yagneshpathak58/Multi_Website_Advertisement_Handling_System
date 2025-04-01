@@ -1,0 +1,47 @@
+﻿@model Multi_Ad_Runn.Models.User_Master
+@{
+    ViewBag.Title = "AdRequest";
+    Layout = "~/Views/User_MasterPage.cshtml";
+}
+
+<section id="main" class="clearfix  ad-profile-page">
+    <div class="container">
+        <div class="breadcrumb-section">
+
+            <ol class="breadcrumb">
+                <li><a href="~/Comman/Index">Home</a></li>
+                <li>My Profile</li>
+            </ol>
+            <h2 class="title">My Profile</h2>
+        </div>
+        <div class="ad-profile section">
+            <div class="user-profile">
+                <div class="user-images">
+                    <img src="~/images/user.jpg" alt="User Images" class="img-fluid">
+                </div>
+                <div class="user">
+                    <h2>Hello, <a href="#">@Html.DisplayFor(model => model.U_Name) </a></h2>
+                    @*<h5></h5>*@
+                </div>
+                <div class="favorites-user">
+                    <div class="my-ads">
+                        <a href="my-ads.html">23<small>My ADS</small></a>
+                    </div>
+                    <div class="favorites">
+                        <a href="#">18<small>Favorites</small></a>
+                    </div>
+                </div>
+            </div>
+            <ul class="user-menu">
+                <li class="active"><a href="~/Profile/UserProfile">Profile</a></li>
+                <li><a href="~/Profile/ChangePassword">Change Password</a></li>
+                <li><a href="~/Profile/ViewOrderHistory">Ads History</a></li>
+                <li><a href="~/AdRequestMaster/AdRequest">Ads Request</a></li>
+                @*<li><a href="archived-ads.html">Archived ads </a></li>
+                    <li><a href="pending-ads.html">Pending approval</a></li>
+                    <li><a href="delete-account.html">Close account</a></li>*@
+            </ul>
+        </div>
+        @RenderBody()
+    </div>
+</section>

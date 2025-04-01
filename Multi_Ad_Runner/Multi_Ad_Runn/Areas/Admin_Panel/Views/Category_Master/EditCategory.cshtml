@@ -1,0 +1,75 @@
+﻿@model Multi_Ad_Runn.Areas.Admin_Panel.Data.Category_Master
+@{
+    ViewBag.Title = "EditCategory";
+    Layout = "~/Areas/Admin_Panel/Views/Admin_MasterPage.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Edit Category</h4>
+                    <div class="basic-form">
+                        <form>
+                            <div class="form-row">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.ValidationSummary(true, "", new { @class = "text-success" })
+                                <div class="form-group col-md-12">
+                                    <label> Category ID</label>
+                                    @*<input type="email" class="form-control" placeholder="Email">*@
+                                    @Html.TextBoxFor(model => model.C_Id, htmlAttributes: new { @class = "form-control" })
+                                </div>
+
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label> Category Name</label>
+                                    @*<input type="email" class="form-control" placeholder="Email">*@
+                                    @Html.TextBoxFor(model => model.C_Name, htmlAttributes: new { @class = "form-control", @placeholder = "Enter Category Name" })
+                                    @Html.ValidationMessageFor(model => model.C_Name, "", new { @class = "alert alert-danger" })
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label>Description</label>
+                                    @*<input type="password" class="form-control" placeholder="Password">*@
+                                    @Html.TextAreaFor(model => model.C_Des, htmlAttributes: new { @class = "form-control", @placeholder = "Enter Category Description" })
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label>Status</label>
+                                    @*<input type="email" class="form-control" placeholder="Email">*@
+                                    @*@Html.TextBoxFor(model => model.C_Status, htmlAttributes: new { @class = "form-control", @placeholder = "Enter Category Name" })*@
+                                    @Html.DropDownList("C_Status", new List<SelectListItem>
+                                       {
+
+                                           new SelectListItem{Text="Active",Value="Active",Selected=true},
+                                           new SelectListItem{Text="DeActive",Value="DeActive"},
+                                       }, "", new { @class = "form-control" })
+                                </div>
+
+                            </div>
+
+
+                            <button type="submit" class="btn btn-dark">Update Data</button>
+                        </form>
+                        <div class="alert alert-success">@Html.ViewData["Message"]</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+<script src="~/Areas/Admin_Panel/plugins/common/common.min.js"></script>
+<script src="~/Areas/Admin_Panel/js/custom.min.js"></script>
+<script src="~/Areas/Admin_Panel/js/settings.js"></script>
+<script src="~/Areas/Admin_Panel/js/gleek.js"></script>
+<script src="~/Areas/Admin_Panel/js/styleSwitcher.js"></script>
+

@@ -1,0 +1,131 @@
+﻿@model Multi_Ad_Runn.Areas.Admin_Panel.Data.PaymentDetail
+@{
+    ViewBag.Title = "OrderDetail";
+    Layout = "~/Areas/Admin_Panel/Views/Admin_MasterPage.cshtml";
+}
+
+<!--**********************************
+           Content body start
+       ***********************************-->
+
+
+
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+        </ol>
+    </div>
+</div>
+<!-- row -->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Order Detail</h4>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered zero-configuration">
+                            <thead>
+                                <tr>
+
+                                    <th>Bill Details</th>
+                                    <th>User Details</th>
+                                    <th>Ad Details</th>
+                                    <th>Page Detail</th>
+                                    <th>Duration</th>
+                                    <th>Payment Details</th>
+                                    
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                              
+                                <tr>
+                                    
+                                        @Html.HiddenFor(model => model.C_Id)
+                                        @Html.HiddenFor(model => model.U_Id)
+                                        @Html.HiddenFor(model => model.Or_Id)
+                                    
+                                    <td>
+
+
+                                        Bill-Number:@Html.DisplayFor(model => model.B_Num)
+                                        <br />
+                                        Location :@Html.DisplayFor(model => model.Bi_Location)
+                                    </td>
+                                    <td>
+
+                                        Name :@Html.DisplayFor(model => model.U_Name)
+                                        <br />
+                                        Email :@Html.DisplayFor(model => model.U_Email)
+                                        <br />
+                                        Contact :@Html.DisplayFor(model => model.U_Contact)
+                                    </td>
+                                    <td>
+
+                                        Title :@Html.DisplayFor(model => model.A_R_Title)
+                                        <br />
+                                        Ad Category :@Html.DisplayFor(model => model.C_Name)
+                                        <br />
+                                        <img src="../@Html.DisplayFor(model => model.A_R_ImagePath)" alt="@Html.DisplayFor(model=> model.A_R_ImageName)" class="img-fluid">
+
+                                    </td>
+                                    <td>
+
+                                        Page :@Html.DisplayFor(model => model.A_R_Page)<br />
+                                        Position : @Html.DisplayFor(model => model.A_R_Position)
+                                    </td>
+                                    <td>
+                                        Months :@Html.DisplayFor(model => model.A_R_Duration)<br />
+                                        Expiry Date : @Html.DisplayFor(model => model.A_R_Expire_Date)
+                                    </td>
+                                    <td>
+
+                                        Payment Mode : @Html.DisplayFor(model => model.Bi_Payment_Mode)
+                                        <br />
+                                        Payment Id : @Html.DisplayFor(model => model.Bi_Payment_Id)
+                                        <br />
+                                        Sub-Ammount :@Html.DisplayFor(model => model.Bi_SubAmmount)
+                                        <br />
+                                        IGST :@Html.DisplayFor(model => model.Bi_IGST)
+                                        <br />
+                                        CGST:@Html.DisplayFor(model => model.Bi_CGst)
+                                        <br />
+                                        SGST :@Html.DisplayFor(model => model.Bi_SGST)
+                                        <br />
+                                        Total Price:@Html.DisplayFor(model => model.Bi_Total_Price)
+
+                                    </td>
+                                   
+
+                                </tr>
+                                
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                   
+                                    <th>Bill Details</th>
+                                    <th>User Details</th>
+                                    <th>Ad Details</th>
+                                    <th>Page Detail</th>
+                                    <th>Duration</th>
+                                    <th>Payment Details</th>
+                                    
+                                    
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #/ container -->
+<!--**********************************
+    Content body end
+***********************************-->

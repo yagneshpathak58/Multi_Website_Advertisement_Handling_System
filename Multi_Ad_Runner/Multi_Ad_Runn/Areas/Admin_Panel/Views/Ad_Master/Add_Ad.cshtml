@@ -1,0 +1,82 @@
+﻿@model Multi_Ad_Runn.Areas.Admin_Panel.Data.Ad_Master
+@{
+    ViewBag.Title = "Add_Ad";
+    Layout = "~/Areas/Admin_Panel/Views/Admin_MasterPage.cshtml";
+}
+
+@using (Html.BeginForm("Add_Ad", "Ad_Master", FormMethod.Post))
+{
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Add Ad</h4>
+                        <div class="basic-form">
+                            <form>
+                                <div class="form-row">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-success" })
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div class="form-group col-md-6">
+                                        <label>Ad Position</label>
+                                        @*<input type="email" class="form-control" placeholder="Email">*@
+                                        @Html.DropDownList("Ad_Position", new List<SelectListItem>
+                                        {
+
+                                            new SelectListItem{Text="Center",Value="Center",Selected=true},
+                                            new SelectListItem{Text="Up",Value="Up"},
+                                            new SelectListItem{Text="Down",Value="Down"},
+                                            new SelectListItem{Text="RightSide",Value="RightSide"},
+                                            new SelectListItem{Text="LeftSide",Value="LeftSide"},
+                                        }, "", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Ad_Position, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label>Ad Page</label>
+                                        @*<input type="email" class="form-control" placeholder="Email">*@
+                                        @*@Html.PasswordFor(model => model.U_Password, htmlAttributes: new { @class = "form-control", @placeholder = "Enter Password " })*@
+                                        @Html.DropDownList("Ad_Page", new List<SelectListItem>
+                                       {
+
+                                           new SelectListItem{Text="Main",Value="Main",Selected=true},
+                                           new SelectListItem{Text="Inner",Value="Inner"},
+
+                                       }, "", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Ad_Page, "", new { @class = "text-danger" })
+                                    </div>
+
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label>Price</label>
+                                        @*<input type="email" class="form-control" placeholder="Email">*@
+                                        @Html.TextBoxFor(model => model.Ad_Price, htmlAttributes: new { @class = "form-control", @placeholder = "Price " })
+                                        @Html.ValidationMessageFor(model => model.Ad_Price, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group col-md-8">
+                                        <label>Publisher</label>
+                                        @*<input type="email" class="form-control" placeholder="Email">*@
+                                        @*@Html.PasswordFor(model => model.U_Password, htmlAttributes: new { @class = "form-control", @placeholder = "Enter Password " })*@
+                                        @Html.TextAreaFor(model => model.Ad_Des, htmlAttributes: new { @class = "form-control", @placeholder = "Description" })
+                                    </div>
+
+                                </div>
+
+
+                                <button type="submit" class="btn btn-dark">Save Data</button>
+
+                            </form>
+                        </div>
+                        <div class="alert alert-success">@Html.ViewData["Message"]</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script src="~/Areas/Admin_Panel/plugins/common/common.min.js"></script>
+<script src="~/Areas/Admin_Panel/js/custom.min.js"></script>
+<script src="~/Areas/Admin_Panel/js/settings.js"></script>
+<script src="~/Areas/Admin_Panel/js/gleek.js"></script>
+<script src="~/Areas/Admin_Panel/js/styleSwitcher.js"></script>
+

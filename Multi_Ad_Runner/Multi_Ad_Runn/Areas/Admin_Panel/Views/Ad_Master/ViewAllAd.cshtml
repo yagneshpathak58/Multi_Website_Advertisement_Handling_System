@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Multi_Ad_Runn.Areas.Admin_Panel.Data.Ad_Master>
+@{
+    ViewBag.Title = "ViewAllAd";
+    Layout = "~/Areas/Admin_Panel/Views/Admin_MasterPage.cshtml";
+}
+
+
+
+<!--**********************************
+           Content body start
+       ***********************************-->
+
+
+
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+        </ol>
+    </div>
+</div>
+<!-- row -->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">All Ad</h4>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered zero-configuration">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Position /&&/ Page</th>
+                                    <th>Price</th>
+                                    <th>Status</th>
+                                    <th>DATE</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.Ad_Id)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Ad_Position)<br />@Html.DisplayFor(modelItem => item.Ad_Page)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Ad_Price)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Ad_Status)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Ad_Date)</td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "EditAd", new { adid = item.Ad_Id}) |
+                                            @Html.ActionLink("Delete", "DeleteAd", new { adid = item.Ad_Id })
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Position /&&/ Page</th>
+                                    <th>Price</th>
+                                    <th>Status</th>
+                                    <th>DATE</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #/ container -->
+<!--**********************************
+    Content body end
+***********************************-->

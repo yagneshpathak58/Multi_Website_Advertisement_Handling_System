@@ -1,0 +1,399 @@
+﻿@model Multi_Ad_Runn.Models.PaymentDetails
+@{
+    ViewBag.Title = "PaymentOrderBill";
+    Layout = "~/Views/User_MasterPage.cshtml";
+}
+
+@section scripts{
+    <script type="text/javascript">
+        function m1() {
+            $("#UPI").modal("show");
+
+        }
+
+        function m2() {
+            $("#CDCard").modal("show");
+
+        }
+
+        /*$("#Bi_Location").change(function () {
+            var selectedText2 = $("#Bi_Location option:selected").value;
+            alert($('option:selected', $(this)).value);
+        });*/
+
+        function m3() {
+            //window.location.href = '@Url.Action("temoM", "BillOrder")/';
+            var loc = document.getElementById("Bi_Location").Value;
+            alert(($("#Bi_Location option:selected").Value));
+
+
+            //var vehicleId = document.getElementById("vch").value;
+
+            //$.ajax({
+            //    url: "/Trip/TripDetailByVehicleId/",
+            //    type: "GET",
+            //    data: {
+            //        "vehicleId": vehicleId
+            //    },
+            //    success: function (result) {
+            //        console.log(result);
+            //        console.log(result.data);
+
+            //        //$("#tripPartial").html(result);
+            //        $("#Trip").val('');
+            //        $("#Trip").empty();
+            //        //$("#dateFrom").val('');
+            //        //$("#dateTo").val('');
+
+            //        $("#Trip").append(result);
+
+
+            //        //var tripdetails = document.getElementById("Trip").value;
+            //        //tripdetails = result;
+
+            //        var divBtnGenerate = document.getElementById("DivTrip");
+            //        divBtnGenerate.style.display = vehicleId != "0" ? "block" : "none";
+            //    },
+            //});
+        }
+    </script>
+}
+@using (Html.BeginForm("PaymentOrderBill", "BillOrder", FormMethod.Post))
+{
+    <section id="main" class="clearfix ad-post-page">
+        <div class="container">
+            <div class="breadcrumb-section">
+
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li>Ad Post</li>
+                </ol>
+                <h2 class="title">Post Free Ad</h2>
+            </div>
+            <div id="ad-post">
+                <div class="row category-tab">
+                    <div class="col-lg-4 col-md-6" style="margin-left:280px">
+                        <div class="section cat-option select-category post-option" style="width:600px">
+                            <h4>Select a subcategory</h4>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered zero-configuration">
+                                    <thead>
+
+                                        <tr>
+                                            <th>Fields</th>
+                                            <th>Value</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @Html.HiddenFor(model => model.U_Id)
+                                        @Html.HiddenFor(model => model.C_Id)
+
+
+                                        @Html.HiddenFor(model => model.A_R_ImageName)
+                                        @Html.HiddenFor(model => model.A_R_ImagePath)
+
+                                        <tr>
+                                            <td> Name </td>
+                                            <td>
+                                                @Html.DisplayFor(model => model.U_Name)
+                                                @Html.HiddenFor(model => model.U_Name)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> Email</td>
+                                            <td>
+                                                @Html.DisplayFor(model => model.U_Email)
+                                                @Html.HiddenFor(model => model.U_Email)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Contact</td>
+                                            <td>
+                                                @Html.HiddenFor(model => model.U_Contact)
+                                                @Html.DisplayFor(model => model.U_Contact)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Location</td>
+                                            <td>
+                                                @Html.HiddenFor(model => model.Bi_Location)
+                                                @*@Html.DropDownList("Bi_Location", new SelectList(Model.locations, "LID", "LName", Model.Bi_Location), new { @class = "form-control" })*@
+                                                @*@Html.DropDownList("Bi_Location", ViewBag.locations as IEnumerable<SelectListItem>, "-- Select Locaation --", new { @class = "select2", id = "Bi_Location" })*@
+                                                @Html.DropDownListFor(model => model.Bi_Location, Model.Location, "Please Select Location", new
+                                                {
+                                                    @class = "form-control",
+                                                    id = "Bi_Location",
+                                               onchange = "m3()"
+                                           })
+
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Title </td>
+                                            <td>
+                                                @Html.HiddenFor(model => model.A_R_Title)
+
+                                                @Html.DisplayFor(model => model.A_R_Title)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ad Page </td>
+                                            <td>
+                                                @Html.HiddenFor(model => model.A_R_Page)
+                                                @Html.DisplayFor(model => model.A_R_Page)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ad Position </td>
+                                            <td>
+                                                @Html.HiddenFor(model => model.A_R_Position)
+                                                @Html.DisplayFor(model => model.A_R_Position)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ad Price </td>
+                                            <td>
+                                                @Html.HiddenFor(model => model.Ad_Price)
+                                                @Html.DisplayFor(model => model.Ad_Price)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Category</td>
+                                            <td>
+                                                @Html.HiddenFor(model => model.C_Name)
+                                                @Html.DisplayFor(model => model.C_Name)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Duration (Months)</td>
+                                            <td>
+                                                @Html.HiddenFor(model => model.A_R_Duration)
+                                                @Html.DisplayFor(model => model.A_R_Duration)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> Plan Expire Date </td>
+                                            <td>
+                                                @Html.HiddenFor(model => model.A_R_Expire_Date)
+                                                @Html.DisplayFor(model => model.A_R_Expire_Date)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sub Ammount </td>
+                                            <td>
+                                                @Html.HiddenFor(model => model.Bi_SubAmmount)
+                                                @Html.DisplayFor(model => model.Bi_SubAmmount)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>CGST </td>
+                                            <td>
+                                                @Html.HiddenFor(model => model.Bi_CGst)
+                                                @Html.DisplayFor(model => model.Bi_CGst)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>SGST </td>
+                                            <td>
+                                                @Html.HiddenFor(model => model.Bi_SGST)
+                                                @Html.DisplayFor(model => model.Bi_SGST)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>IGST </td>
+                                            <td>
+                                                @Html.HiddenFor(model => model.Bi_IGST)
+                                                @Html.DisplayFor(model => model.Bi_IGST)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total Ammount </td>
+                                            <td>
+                                                @Html.HiddenFor(model => model.Bi_Total_Price)
+                                                @Html.DisplayFor(model => model.Bi_Total_Price)
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td> Payment Method </td>
+                                            <td>
+                                                @*Button For UPI*@
+                                                UPI : @Html.RadioButtonFor(model => model.Bi_Payment_Mode, "UPI", new { @class = "form-control", id = "Bi_Payment_Mode", onclick = "m1()" })
+                                                @*<input type="radio" id="Bi_Payment_Mode" value="UPI" data-toggle="modal" data-target="#UPI" name="p" />*@
+                                                @*@Html.RadioButton("Payment_Mode", "UPI", htmlAttributes:new { @class = "form-control"})*@
+                                                <br />
+                                                Credit/Debit Card:@Html.RadioButtonFor(model => model.Bi_Payment_Mode, "Credit/DebitCard", new { @class = "form-control", id = "Bi_Payment_Mode", onclick = "m2()" })
+                                                @*Model For UPI*@
+                                                <div class="modal fade" id="UPI" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLongTitle">UPI Payments</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+
+                                                                <section id="main" class="clearfix ad-details-page">
+                                                                    <div class="container">
+
+                                                                        <div class="adpost-details">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-12">
+                                                                                    <form action="#">
+                                                                                        <fieldset>
+                                                                                            <div class="section postdetails">
+                                                                                                <h4><span class="pull-right">* Mandatory Fields</span></h4>
+                                                                                                <div class="form-row">
+                                                                                                    <div class="form-group col-md-12">
+                                                                                                        <label>UPI Id </label>
+                                                                                                        @*<input type="password" class="form-control" placeholder="Password">*@
+                                                                                                        @*@Html.TextBoxFor(model => model.A_R_Title, htmlAttributes: new { @class = "form-control", @placeholder = "Title" })*@
+                                                                                                        @Html.TextBox("UPI", "", new { @class = "form-control", @placeholder = "UPI ID" })
+
+                                                                                                    </div>
+                                                                                                </div>
+
+
+                                                                                                <button type="submit" class="btn btn-primary">PAY</button>
+                                                                                            </div>
+
+                                                                                        </fieldset>
+                                                                                    </form>
+                                                                                </div>
+
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </section>
+
+
+                                                            </div>
+                                                            @*<div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-primary">Save changes</button>
+                                                            </div>*@
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                @*UPI Script*@
+
+                                                @*Model For CDCard*@
+                                                <div class="modal fade" id="CDCard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLongTitle">Debit/Cridet Card Payment</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <section id="main" class="clearfix ad-details-page">
+                                                                    <div class="container">
+
+                                                                        <div class="adpost-details">
+                                                                            <div class="row">
+                                                                                <div class="col-lg-12">
+                                                                                    <form action="#">
+                                                                                        <fieldset>
+                                                                                            <div class="section postdetails">
+                                                                                                <h4><span class="pull-right">* Mandatory Fields</span></h4>
+                                                                                                <div class="form-row">
+                                                                                                    <div class="form-group col-md-12">
+                                                                                                        <label>Card Number </label>
+                                                                                                        @*<input type="password" class="form-control" placeholder="Password">*@
+                                                                                                        @*@Html.TextBoxFor(model => model.A_R_Title, htmlAttributes: new { @class = "form-control", @placeholder = "Title" })*@
+                                                                                                        @Html.TextBox("CardNumber", "", new { @class = "form-control", @placeholder = "CardNumber" })
+
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="form-row">
+                                                                                                    <div class="form-group col-md-12">
+                                                                                                        <label>Card Holder Name</label>
+                                                                                                        @*<input type="password" class="form-control" placeholder="Password">*@
+                                                                                                        @*@Html.TextBoxFor(model => model.A_R_Title, htmlAttributes: new { @class = "form-control", @placeholder = "Title" })*@
+                                                                                                        @Html.TextBox("CardHName", "", new { @class = "form-control", @placeholder = "Card Holder Name" })
+
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="form-row">
+                                                                                                    <div class="form-group col-md-6">
+                                                                                                        <label>Expiry Date</label>
+                                                                                                        @*<input type="password" class="form-control" placeholder="Password">*@
+                                                                                                        @*@Html.TextBoxFor(model => model.A_R_Title, htmlAttributes: new { @class = "form-control", @placeholder = "Title" })*@
+                                                                                                        @Html.TextBox("ExpiryDate", "", new { @class = "form-control", @placeholder = "ExpiryDate" })
+
+                                                                                                    </div>
+                                                                                                    <div class="form-group col-md-6">
+                                                                                                        <label>CVV</label>
+                                                                                                        @*<input type="password" class="form-control" placeholder="Password">*@
+                                                                                                        @*@Html.TextBoxFor(model => model.A_R_Title, htmlAttributes: new { @class = "form-control", @placeholder = "Title" })*@
+                                                                                                        @Html.TextBox("CVV", "", new { @class = "form-control", @placeholder = "CVV" })
+
+                                                                                                    </div>
+                                                                                                </div>
+
+
+                                                                                                <button type="submit" class="btn btn-primary">PAY</button>
+                                                                                            </div>
+
+                                                                                        </fieldset>
+                                                                                    </form>
+                                                                                </div>
+
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </section>
+
+                                                            </div>
+                                                            @*<div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                                <button type="button" class="btn btn-primary">Save changes</button>
+
+                                                            </div>*@
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @*Button For CDCard*@
+                                                @*<input type="radio" id="Bi_Payment_Mode" value="CDCard" data-toggle="modal" data-target="#CDCard" name="p" />*@
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Fields</th>
+                                            <th>Value</th>
+                                        </tr>
+
+                                    </tfoot>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-8 offset-sm-2 text-center">
+                        <div class="ad-section">
+                            <a href="#"><img src="~/images/ads/3.jpg" alt="Image" class="img-fluid"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+}

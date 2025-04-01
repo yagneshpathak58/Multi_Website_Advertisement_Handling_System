@@ -1,0 +1,116 @@
+﻿@model Multi_Ad_Runn.Models.Publisher_Master
+@{
+    ViewBag.Title = "RequestPublisher";
+    Layout = "~/Views/User_MasterPage.cshtml";
+}
+
+@using (Html.BeginForm("RequestPublisher", "PublisherMaster", FormMethod.Post))
+{
+    <section id="main" class="clearfix user-page">
+        <div class="container">
+            <div class="row text-center">
+
+                <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+                    <div class="user-account">
+                        <h2>Publisher Registration</h2>
+                       
+                        <form action="#">
+                            @Html.ValidationSummary(true, "", new { @class = "text-success" })
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @*<input type="text" class="form-control" placeholder="Name">*@
+                                @Html.TextBoxFor(model => model.Pu_Name, htmlAttributes: new { @class = "form-control", @placeholder = "Enter Publisher Name" })
+                                @Html.ValidationMessageFor(model => model.Pu_Name, "", new { @class = "text-danger" })
+                                @*@Html.TextBox("txtName", "", new { @class = "form-control", @placeholder = "Username" })*@
+                            </div>
+                            <div class="form-group">
+                                @*<input type="email" class="form-control" placeholder="Email Id">*@
+                                @Html.TextBoxFor(model => model.Pu_Email, htmlAttributes: new { @class = "form-control", @placeholder = "Enter User Email Id" })
+                                @Html.ValidationMessageFor(model => model.Pu_Email, "", new { @class = "text-danger" })
+                                @*@Html.TextBox("txtEmail", "", new { @class = "form-control", @placeholder = "Email Id" })*@
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label></label>
+                                    @*<input type="email" class="form-control" placeholder="Email">*@
+                                    @Html.TextBoxFor(model => model.Pu_Contact, htmlAttributes: new { @class = "form-control", @placeholder = "Enter Contact No " })
+                                    @Html.ValidationMessageFor(model => model.Pu_Contact, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label></label>
+                                    @*<input type="email" class="form-control" placeholder="Email">*@
+                                    @*@Html.PasswordFor(model => model.U_Password, htmlAttributes: new { @class = "form-control", @placeholder = "Enter Password " })*@
+                                    @Html.DropDownListFor(model => model.C_Id, Model.Category_Master, "Please Select Category", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.C_Id, "", new { @class = "text-danger" })
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label></label>
+                                    @*<input type="email" class="form-control" placeholder="Email">*@
+                                    @Html.TextBoxFor(model => model.Pu_WebSite, htmlAttributes: new { @class = "form-control", @placeholder = "Enter Website Name Or Link" })
+                                    @Html.ValidationMessageFor(model => model.Pu_WebSite, "", new { @class = "text-danger" })
+                                </div>
+                                <!--<div class="form-group col-md-6">
+        <label></label>-->
+                                @*<input type="email" class="form-control" placeholder="Email">*@
+                                <!--@Html.PasswordFor(model => model.Pu_Password, htmlAttributes: new { @class = "form-control", @placeholder = "Enter Password " })-->
+                                @*@Html.DropDownListFor(model => model.C_Id, Model.Category_Master, "Please Select Category", new { @class = "form-control" })*@
+                                <!--</div>-->
+
+                            </div>
+
+                            @*<select class="form-control">
+            <option value="#">Select City</option>
+            <option value="#">London UK</option>
+            <option value="#">Newyork, USA</option>
+            <option value="#">Seoul, Korea</option>
+            <option value="#">Beijing, China</option>
+        </select>*@
+                            @*@Html.DropDownList("ddCity", new List<SelectListItem>
+        {
+
+            new SelectListItem{Text="Bharuch",Value="1",Selected=true},
+            new SelectListItem{Text="Vadodara",Value="2"},
+            new SelectListItem{Text="Ahemdabad",Value="3"},
+            new SelectListItem{Text="Surat",Value="4"},
+        }, "Select City", new { @class = "form-control" })*@
+                            @*<div class="checkbox">
+            <label class="pull-left checked" for="signing"><input type="checkbox" name="signing" id="signing"> By signing up for an account you agree to our Terms and Conditions </label>
+        </div>*@
+
+                            <button type="submit" class="btn">Send Request</button>
+                            <div class="alert alert-success">@Html.ViewData["Message"]</div>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+@*<script src="~/js/jquery.min.js" type="ceafcf6594ebb5a1a4b3c981-text/javascript"></script>
+<script src="~/js/popper.min.js" type="ceafcf6594ebb5a1a4b3c981-text/javascript"></script>
+<script src="~/js/modernizr.min.js" type="ceafcf6594ebb5a1a4b3c981-text/javascript"></script>
+<script src="~/js/bootstrap.min.js" type="ceafcf6594ebb5a1a4b3c981-text/javascript"></script>
+<script src="https://maps.google.com/maps/api/js?sensor=true" type="ceafcf6594ebb5a1a4b3c981-text/javascript"></script>
+<script src="~/js/gmaps.min.js" type="ceafcf6594ebb5a1a4b3c981-text/javascript"></script>
+<script src="~/js/owl.carousel.min.js" type="ceafcf6594ebb5a1a4b3c981-text/javascript"></script>
+<script src="~/js/scrollup.min.js" type="ceafcf6594ebb5a1a4b3c981-text/javascript"></script>
+<script src="~/js/price-range.js" type="ceafcf6594ebb5a1a4b3c981-text/javascript"></script>
+<script src="~/js/jquery.countdown.js" type="ceafcf6594ebb5a1a4b3c981-text/javascript"></script>
+<script src="~/js/custom.js" type="ceafcf6594ebb5a1a4b3c981-text/javascript"></script>
+<script src="~/js/switcher.js" type="ceafcf6594ebb5a1a4b3c981-text/javascript"></script>
+<script type="ceafcf6594ebb5a1a4b3c981-text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','../../www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-73239902-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+<script src="../cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="ceafcf6594ebb5a1a4b3c981-|49" defer=""></script>*@
+

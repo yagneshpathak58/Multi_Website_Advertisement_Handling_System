@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Multi_Ad_Runn.Areas.Admin_Panel.Data.Bill_Master>
+@{
+    ViewBag.Title = "ViewAllBill";
+    Layout = "~/Areas/Admin_Panel/Views/Admin_MasterPage.cshtml";
+}
+
+<!--**********************************
+           Content body start
+       ***********************************-->
+
+
+
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+        </ol>
+    </div>
+</div>
+<!-- row -->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Data Table</h4>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered zero-configuration">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Bill Number</th>
+                                    <th>User ID</th>
+                                    <th>BILL LOCATION</th>
+                                    <th>PAYMENT DETAIL</th>
+                                    <th>SUB AMMOUNT</th>
+                                    <th>GST</th>
+                                    <th>TOTAL PRICE</th>
+                                    <th>STATUS</th>
+                                    <th>DATE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => item.Bi_Id)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.B_Num)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.U_Id)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Bi_Location)</td>
+                                    <td>
+
+                                        MODE:@Html.DisplayFor(modelItem => item.Bi_Payment_Mode)<br />
+                                        ID:@Html.DisplayFor(modelItem => item.Bi_Payment_Id)
+                                    </td>
+                                    <td>@Html.DisplayFor(modelItem => item.Bi_SubAmmount)</td>
+                                    <td>
+
+                                        CGST:@Html.DisplayFor(modelItem => item.Bi_CGst)<br />
+                                        SGST:@Html.DisplayFor(modelItem => item.Bi_SGST)<br />
+                                        IGST:@Html.DisplayFor(modelItem => item.Bi_IGST)<br />
+                                    </td>
+                                    <td>@Html.DisplayFor(modelItem => item.Bi_Total_Price)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Bi_Status)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.Bi_Date)</td>
+                                </tr>
+                                }
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Bill Number</th>
+                                    <th>User ID</th>
+                                    <th>BILL LOCATION</th>
+                                    <th>PAYMENT DETAIL</th>
+                                    <th>SUB AMMOUNT</th>
+                                    <th>GST</th>
+                                    <th>TOTAL PRICE</th>
+                                    <th>STATUS</th>
+                                    <th>DATE</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #/ container -->
+<!--**********************************
+    Content body end
+***********************************-->

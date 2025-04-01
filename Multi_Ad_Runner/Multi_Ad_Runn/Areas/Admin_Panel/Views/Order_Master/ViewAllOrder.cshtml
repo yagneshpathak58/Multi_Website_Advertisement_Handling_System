@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Multi_Ad_Runn.Areas.Admin_Panel.Data.PaymentDetail>
+@{
+    ViewBag.Title = "ViewAllOrder";
+    Layout = "~/Areas/Admin_Panel/Views/Admin_MasterPage.cshtml";
+}
+
+<!--**********************************
+           Content body start
+       ***********************************-->
+
+
+
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+        </ol>
+    </div>
+</div>
+<!-- row -->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">All Orders</h4>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered zero-configuration">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Bill Number</th>
+                                    <th>Title</th>
+                                    <th>Page Detail</th>
+                                    <th>Duration</th>
+                                    <th>Status</th>
+                                    <th>DATE</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.HiddenFor(modelItem => item.C_Id)
+                                            @Html.HiddenFor(modelItem => item.U_Id)
+                                            @Html.DisplayFor(modelItem => item.Or_Id)
+                                        </td>
+                                        <td>@Html.DisplayFor(modelItem => item.B_Num)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.A_R_Title)</td>
+                                        <td>
+
+                                            Page :@Html.DisplayFor(modelItem => item.A_R_Page)<br />
+                                            Position : @Html.DisplayFor(modelItem => item.A_R_Position)
+                                        </td>
+                                        <td>
+                                            @Html.HiddenFor(modelItem => item.A_R_ImageName)
+                                            @Html.HiddenFor(modelItem => item.A_R_ImagePath)
+                                            Months :@Html.DisplayFor(modelItem => item.A_R_Duration)<br />
+                                            Expiry Date : @Html.DisplayFor(modelItem => item.A_R_Expire_Date)
+                                        </td>
+                                        <td>@Html.DisplayFor(modelItem => item.Or_Status)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Or_Date)</td>
+                                        <td>
+                                            @Html.ActionLink("Detail", "OrderDetail", new { Bnum = item.B_Num,cid = item.C_Id,uid = item.U_Id }) |
+
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Bill Number</th>
+                                    <th>Title</th>
+                                    <th>Page Detail</th>
+                                    <th>Duration</th>
+                                    <th>Status</th>
+                                    <th>DATE</th>
+                                    <th>ACTION</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- #/ container -->
+<!--**********************************
+    Content body end
+***********************************-->

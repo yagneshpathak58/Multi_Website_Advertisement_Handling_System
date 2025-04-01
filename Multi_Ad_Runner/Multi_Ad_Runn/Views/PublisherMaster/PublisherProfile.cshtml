@@ -1,0 +1,127 @@
+﻿@model Multi_Ad_Runn.Models.Publisher_Master
+@{
+    ViewBag.Title = "PublisherProfile";
+    Layout = "~/Views/User_MasterPage.cshtml";
+}
+
+@using (Html.BeginForm("PublisherProfile", "PublisherMaster", FormMethod.Post))
+{
+    <section id="main" class="clearfix  ad-profile-page">
+        <div class="container">
+            <div class="breadcrumb-section">
+
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Home</a></li>
+                    <li>Ad Post</li>
+                </ol>
+                <h2 class="title">My Profile</h2>
+            </div>
+            <div class="ad-profile section">
+                <div class="user-profile">
+                    <div class="user-images">
+                        <img src="~/images/user.jpg" alt="User Images" class="img-fluid">
+                    </div>
+                    <div class="user">
+                        <h2>Hello, <a href="#">@Html.DisplayFor(model => model.Pu_Name)</a></h2>
+                        @*<h5></h5>*@
+                    </div>
+                    <div class="favorites-user">
+                        <div class="my-ads">
+                            <a href="my-ads.html">23<small>My ADS</small></a>
+                        </div>
+                        <div class="favorites">
+                            <a href="#">18<small>Favorites</small></a>
+                        </div>
+                    </div>
+                </div>
+                <ul class="user-menu">
+                    <li class="active"><a href="~/PublisherMaster/PublisherProfile">Profile</a></li>
+                    <li><a href="~/PublisherMaster/ChangePassword">Change Password</a></li>
+                    
+                </ul>
+            </div>
+            <div class="profile">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="user-pro-section">
+                            @Html.HiddenFor(model => model.Pu_Id)
+                            <div class="profile-details section">
+                                <h2>Profile Details</h2>
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.ValidationSummary(true, "", new { @class = "text-success" })
+                            <div class="form-group">
+                                <label>Username</label>
+                                @Html.TextBoxFor(model => model.Pu_Name, htmlAttributes: new { @class = "form-control", @placeholder = "Enter Name" })
+                                @Html.ValidationMessageFor(model => model.Pu_Name, "", new { @class = "alert alert-danger" })
+                                @*<input type="text" class="form-control" placeholder="Jhon Doe">*@
+                            </div>
+                            <div class="form-group">
+                                <label>Email ID</label>
+                                @Html.TextBoxFor(model => model.Pu_Email, htmlAttributes: new { @class = "form-control", @placeholder = "Enter Email" })
+                                @Html.ValidationMessageFor(model => model.Pu_Email, "", new { @class = "alert alert-danger" })
+                                @*<input type="email" class="form-control" placeholder="jhondoe@mail.com">*@
+                            </div>
+                            <div class="form-group">
+                                <label for="name-three">Mobile</label>
+                                @Html.TextBoxFor(model => model.Pu_Contact, htmlAttributes: new { @class = "form-control", @placeholder = "Enter Contact No" })
+                                @Html.ValidationMessageFor(model => model.Pu_Contact, "", new { @class = "alert alert-danger" })
+                                @*<input type="text" class="form-control" placeholder="+213 1234 56789">*@
+                            </div>
+                            <div class="form-group">
+                                <label for="name-three">Website</label>
+                                @Html.TextBoxFor(model => model.Pu_WebSite, htmlAttributes: new { @class = "form-control", @placeholder = "" })
+                                @Html.ValidationMessageFor(model => model.Pu_WebSite, "", new { @class = "alert alert-danger" })
+                                @*<input type="text" class="form-control" placeholder="+213 1234 56789">*@
+                            </div>
+
+                            </div>
+
+                            <button type="submit" class="btn">Update Profile</button>
+
+                            <a href="#" class="btn cancle">Cancle</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <div class="recommended-cta">
+                            <div class="cta">
+
+                                <div class="single-cta">
+
+                                    <div class="cta-icon icon-secure">
+                                        <img src="~/images/icon/13.png" alt="Icon" class="img-fluid">
+                                    </div>
+                                    <h4>Secure Trading</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                </div>
+
+                                <div class="single-cta">
+
+                                    <div class="cta-icon icon-support">
+                                        <img src="~/images/icon/14.png" alt="Icon" class="img-fluid">
+                                    </div>
+                                    <h4>24/7 Support</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                </div>
+
+                                <div class="single-cta">
+
+                                    <div class="cta-icon icon-trading">
+                                        <img src="~/images/icon/15.png" alt="Icon" class="img-fluid">
+                                    </div>
+                                    <h4>Easy Trading</h4>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                </div>
+
+                                <div class="single-cta">
+                                    <h5>Need Help?</h5>
+                                    <p><span>Give a call on</span><a href="tellto:08048100000"> 08048100000</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+

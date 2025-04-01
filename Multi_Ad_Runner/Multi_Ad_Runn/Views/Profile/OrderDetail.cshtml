@@ -1,0 +1,168 @@
+﻿@model Multi_Ad_Runn.Models.PaymentDetails
+@{
+    ViewBag.Title = "OrderDetail";
+    Layout = "~/Views/User_MasterPage.cshtml";
+}
+
+<section id="main" class="clearfix  ad-profile-page">
+    <div class="container">
+        <div class="breadcrumb-section">
+
+            <ol class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li>Ad Post</li>
+            </ol>
+            <h2 class="title">My Profile</h2>
+        </div>
+        <div class="ad-profile section">
+            <div class="user-profile">
+                <div class="user-images">
+                    <img src="~/images/user.jpg" alt="User Images" class="img-fluid">
+                </div>
+                <div class="user">
+                    <h2>Hello, <a href="#">@Html.DisplayFor(model => model.U_Name)</a></h2>
+
+                </div>
+                <div class="favorites-user">
+                    <div class="my-ads">
+                        <a href="my-ads.html">23<small>My ADS</small></a>
+                    </div>
+                    <div class="favorites">
+                        <a href="#">18<small>Favorites</small></a>
+                    </div>
+                </div>
+            </div>
+           
+            <ul class="user-menu">
+                <li class="active"><a href="~/Profile/UserProfile">Profile</a></li>
+                <li><a href="~/Profile/ChangePassword">Change Password</a></li>
+                <li><a href="~/Profile/ViewOrderHistory">Ads History</a></li>
+                <li><a href="~/AdRequestMaster/AdRequest">Ads Request</a></li>
+            </ul>
+            
+        </div>
+        <div class="section slider">
+            <div class="row">
+
+                <div class="col-lg-7">
+                    <div id="product-carousel" class="carousel slide" data-ride="carousel">
+
+                        <ol class="carousel-indicators">
+                            <li data-target="#product-carousel" data-slide-to="0" class="active">
+                                <img src="../@Html.DisplayFor(model => model.A_R_ImagePath)" alt="@Html.DisplayFor(model=> model.A_R_ImageName)" class="img-fluid">
+                            </li>
+                            @*<li data-target="#product-carousel" data-slide-to="1">
+                                <img src="~/images/slider/list-2.jpg" alt="Carousel Thumb" class="img-fluid">
+                            </li>
+                            <li data-target="#product-carousel" data-slide-to="2">
+                                <img src="~/images/slider/list-3.jpg" alt="Carousel Thumb" class="img-fluid">
+                            </li>
+                            <li data-target="#product-carousel" data-slide-to="3">
+                                <img src="~/images/slider/list-4.jpg" alt="Carousel Thumb" class="img-fluid">
+                            </li>
+                            <li data-target="#product-carousel" data-slide-to="4">
+                                <img src="~/images/slider/list-5.jpg" alt="Carousel Thumb" class="img-fluid">
+                            </li>*@
+                        </ol>
+
+                        <div class="carousel-inner" role="listbox">
+
+                            <div class="item carousel-item active">
+                                <div class="carousel-image">
+
+                                    <img src="../@Html.DisplayFor(model => model.A_R_ImagePath)" alt="@Html.DisplayFor(model=> model.A_R_ImageName)" class="img-fluid" style="height:500px">
+                                </div>
+                            </div>
+
+                            @*<div class="item carousel-item">
+                                <div class="carousel-image">
+
+                                    <img src="~/images/slider/2.jpg" alt="Featured Image" class="img-fluid">
+                                </div>
+                            </div>
+
+                            <div class="item carousel-item">
+                                <div class="carousel-image">
+
+                                    <img src="~/images/slider/3.jpg" alt="Featured Image" class="img-fluid">
+                                </div>
+                            </div>
+
+                            <div class="item carousel-item">
+                                <div class="carousel-image">
+
+                                    <img src="~/images/slider/4.jpg" alt="Featured Image" class="img-fluid">
+                                </div>
+                            </div>
+
+                            <div class="item carousel-item">
+                                <div class="carousel-image">
+
+                                    <img src="~/images/slider/5.jpg" alt="Featured Image" class="img-fluid">
+                                </div>
+                            </div>*@
+                        </div>
+
+                        <a class="left carousel-control" href="#product-carousel" role="button" data-slide="prev">
+                            <i class="fa fa-chevron-left"></i>
+                        </a>
+                        <a class="right carousel-control" href="#product-carousel" role="button" data-slide="next">
+                            <i class="fa fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="slider-text">
+                        <h2>@Html.DisplayFor(model=>model.Bi_Total_Price) INR</h2>
+                        <h3 class="title">@Html.DisplayFor(model => model.A_R_Title)</h3>
+                        <p>
+                            <span>Published By <a href="#">KP Groups</a></span>
+                            <span> Bill Number:<a href="#" class="time">@Html.DisplayFor(model => model.B_Num)</a></span>
+                        </p>
+                        <span class="icon"><i class="fa fa-clock-o"></i><a href="#">@Html.DisplayFor(model => model.Bi_Date)</a></span>
+                        <span class="icon"><i class="fa fa-map-marker"></i><a href="#">@Html.DisplayFor(model => model.Bi_Location)</a></span>
+                        @*<span class="icon"><i class="fa fa-suitcase online"></i><a href="#">Category<strong>@Html.DisplayFor(model => model.C_Name)</strong></a></span>*@
+
+                        <div class="short-info">
+                            <h4>Ad Info</h4>
+                            <p><strong>Category: </strong><a href="#">@Html.DisplayFor(model => model.C_Name)</a> </p>
+                            <p><strong>Ad Page And Position :</strong><a href="#">@Html.DisplayFor(model => model.A_R_Page) And @Html.DisplayFor(model => model.A_R_Position) </a> </p>
+                            <p><strong>Subscription Time : </strong><a href="#">@Html.DisplayFor(model => model.A_R_Duration) Months</a> </p>
+                            <p><strong>Expiry Date: </strong><a href="#">@Html.DisplayFor(model => model.A_R_Expire_Date)</a> </p>
+                            <p><strong>Transaction ID: </strong><a href="#">@Html.DisplayFor(model => model.Bi_Payment_Id)</a> </p>
+                            <p><strong>Payment Mode: </strong><a href="#"></a>@Html.DisplayFor(model => model.Bi_Payment_Mode) </p>
+                            <p><strong>Sub-Ammount: </strong><a href="#"></a>@Html.DisplayFor(model => model.Bi_SubAmmount) <a href="#"></a> <a href="#"></a> <a href="#"></a> </p>
+                            <p><strong>CGST: </strong><a href="#">@Html.DisplayFor(model => model.Bi_CGst)</a></p>
+                            <p><strong>SGST: </strong><a href="#">@Html.DisplayFor(model => model.Bi_SGST)</a></p>
+                            <p><strong>IGST: </strong><a href="#">@Html.DisplayFor(model => model.Bi_IGST)</a></p>
+                            <p><strong>Total-Ammount: </strong><a href="#">@Html.DisplayFor(model => model.Bi_Total_Price) INR./@Html.DisplayFor(model => model.A_R_Duration) Months</a></p>
+                        </div>
+
+                        <div class="contact-with">
+                            <h4>Contact with </h4>
+                            <span class="btn btn-red show-number">
+                                <i class="fa fa-phone-square"></i>
+                                <span class="hide-text">Click to show phone number </span>
+                                <span class="hide-number">012-1234567890</span>
+                            </span>
+                            <a href="#" class="btn"><i class="fa fa-envelope-square"></i>Reply by email</a>
+                        </div>
+
+                        <div class="social-links">
+                            <h4>Share this ad</h4>
+                            <ul class="list-inline">
+                                <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter-square"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus-square"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+                                <li><a href="#"><i class="fa fa-pinterest-square"></i></a></li>
+                                <li><a href="#"><i class="fa fa-tumblr-square"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+</section>
